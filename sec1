@@ -1,0 +1,26 @@
+         CLIPS (Quicksilver Beta 3/26/08)
+CLIPS> (deftemplate animal (slot type))
+CLIPS> (defrule check_animal 
+  (animal (type ?type&~dog))
+  =>
+  (printout t ?type crlf))
+CLIPS> (reset)
+CLIPS> (assert (animal(type dog)))
+<Fact-1>
+CLIPS> (assert (animal(type cat)))
+<Fact-2>
+CLIPS> (run)
+cat
+CLIPS> (deftemplate number
+   (slot value))
+CLIPS> 
+(defrule pos_int
+   (number (value ?v&:(integerp ?v)&:(> ?v 0)))
+   =>
+   (printout t "The number is a positive integer" crlf))
+CLIPS> (reset)
+CLIPS> (assert (number (value 5)))
+<Fact-1>
+CLIPS> (run)
+The number is a positive integer
+CLIPS> 
